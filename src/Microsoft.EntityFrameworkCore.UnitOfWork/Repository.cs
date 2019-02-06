@@ -52,10 +52,7 @@ namespace Microsoft.EntityFrameworkCore
         /// </summary>
         /// <returns>The <see cref="IQueryable{TEntity}"/>.</returns>
         [Obsolete("This method is not recommended, please use GetPagedList or GetPagedListAsync methods")]
-        public IQueryable<TEntity> GetAll()
-        {
-            return _dbSet;
-        }
+        public IQueryable<TEntity> GetAll() => _dbSet;
 
 
         /// <summary>
@@ -470,16 +467,7 @@ namespace Microsoft.EntityFrameworkCore
         /// <param name="entity">The entity to insert.</param>
         /// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous insert operation.</returns>
-        public virtual Task InsertAsync(TEntity entity, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return _dbSet.AddAsync(entity, cancellationToken);
-
-            // Shadow properties?
-            //var property = _dbContext.Entry(entity).Property("Created");
-            //if (property != null) {
-            //property.CurrentValue = DateTime.Now;
-            //}
-        }
+        public virtual Task InsertAsync(TEntity entity, CancellationToken cancellationToken = default(CancellationToken)) => _dbSet.AddAsync(entity, cancellationToken);// Shadow properties?//var property = _dbContext.Entry(entity).Property("Created");//if (property != null) {//property.CurrentValue = DateTime.Now;//}
 
         /// <summary>
         /// Inserts a range of entities asynchronously.
@@ -500,20 +488,13 @@ namespace Microsoft.EntityFrameworkCore
         /// Updates the specified entity.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        public virtual void Update(TEntity entity)
-        {
-            _dbSet.Update(entity);
-        }
+        public virtual void Update(TEntity entity) => _dbSet.Update(entity);
 
         /// <summary>
         /// Updates the specified entity.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        public virtual void UpdateAsync(TEntity entity)
-        {
-            _dbSet.Update(entity);
-
-        }
+        public virtual void UpdateAsync(TEntity entity) => _dbSet.Update(entity);
 
         /// <summary>
         /// Updates the specified entities.
